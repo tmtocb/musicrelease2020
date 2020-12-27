@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Title:</strong>
   <%= @release.title %>
@@ -22,7 +20,7 @@
 <h3>This Release Belongs to <%= pluralize(@release.genres.count, "Genre") %>:</h3>
 <% @release.genres.each do |genre| %>
   <p>
-    <%= link_to genre.name, genre %>
+    <%= link_to genre.name, releases_path(genre: genre.name) %>
   </p>
 <% end %>
 
