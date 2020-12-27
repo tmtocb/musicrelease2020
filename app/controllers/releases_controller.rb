@@ -68,7 +68,7 @@ class ReleasesController < ApplicationController
         releases_by_genre = Release.all
         @genre_name = 'All'
       else
-        releases_by_genre = filter_release_by_genre(requested_genre)
+        releases_by_genre = filter_releases_by_genre(requested_genre)
         @genre_name = requested_genre
       end
       order_releases(requested_order, releases_by_genre)
