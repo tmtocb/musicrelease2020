@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  <%= link_to image_tag(@release.photo, width: 150, height: 150), @release %>   
+</p>
+
+<p>
   <strong>Review:</strong>
   <%= @release.review %>
 </p>
@@ -13,10 +17,6 @@
 <p>
   <strong>Rating:</strong>
   <%= @release.rating %>
-</p>
-
-<p>
-  <%= link_to image_tag(@release.photo, width: 150, height: 150), @release %>   
 </p>
 
 <h3>This Release Belongs to <%= pluralize(@release.genres.count, "Genre") %>:</h3>
