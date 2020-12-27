@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   root 'releases#index'
   post 'releases/search'
   resources :genres
