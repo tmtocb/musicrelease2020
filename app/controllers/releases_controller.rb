@@ -2,34 +2,30 @@ class ReleasesController < ApplicationController
   before_action :set_release, only: [:show, :edit, :update, :destroy]
   before_action :set_genres, :set_genres, except: [:show, :destroy]
 
-  # GET /releases
-  # GET /releases.json
   def index
-    @releases = Release.all
+    set_release_genre_with_criteria(params[:genre], '')
   end
 
-  # GET /releases/1
-  # GET /releases/1.json
+  def search
+    set_release_genre_with_criteria(params[:genre], params[:order])
+  end
+
   def show
   end
 
-  # GET /releases/new
   def new
     @release = Release.new
   end
 
-  # GET /releases/1/edit
   def edit
   end
 
-  # POST /releases
-  # POST /releases.json
   def create
     @release = Release.new(release_params)
 
     respond_to do |format|
       if @release.save
-        format.html { redirect_to @release, notice: 'Release was successfully created.' }
+        format.html { redirect_to releases_url, notice: 'Release was successfully created.' }
         format.json { render :show, status: :created, location: @release }
       else
         format.html { render :new }
@@ -38,8 +34,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /releases/1
-  # PATCH/PUT /releases/1.json
   def update
     respond_to do |format|
       if @release.update(release_params)
@@ -52,8 +46,6 @@ class ReleasesController < ApplicationController
     end
   end
 
-  # DELETE /releases/1
-  # DELETE /releases/1.json
   def destroy
     @release.destroy
     respond_to do |format|
@@ -63,7 +55,6 @@ class ReleasesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_release
       @release = Release.find(params[:id])
     end
@@ -72,7 +63,45 @@ class ReleasesController < ApplicationController
       @genres = Genre.all
     end
 
-    # Only allow a list of trusted parameters through.
+    def set_release_genre_with_criteria(requested_genre, requested_order)
+      if requested_genre.nil? || requested_genre.eql?('All')
+        releases_by_genre = Release.all
+        @genre_name = 'All'
+      else
+        releases_by_genre = filter_release_by_genre(requested_genre)
+        @genre_name = requested_genre
+      end
+      order_releases(requested_order, releases_by_genre)
+    end
+
+    def filter_releases_by_genre(genre_name)
+      @genre = Genre.find_by(name: genre_name)
+      releases = if @genre.nil?
+        Release.none 
+      else 
+        @genre.releases
+      end
+    end
+
+    def order_releases(_order, _releases)
+      @releases = case _order
+      when "A-Z"
+        _releases.order('title ASC')
+      when "Z-A"
+        _releases.order('title DESC')
+      when "Highest Rating"
+        _releases.order('rating DESC')
+      when "Lowest Rating"
+        _releases.order('rating ASC')
+      when "Newest First"
+        _releases.order('created_at DESC')
+      when "Oldest First"
+        _releases.order('created_at ASC')
+      else
+        _releases.order('title ASC')
+      end      
+    end
+
     def release_params
       params.require(:release).permit(:title, :review, :rating, :photo, genre_ids: [])
     end
