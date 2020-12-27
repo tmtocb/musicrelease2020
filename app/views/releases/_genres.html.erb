@@ -1,6 +1,10 @@
-<%= link_to "Genre Name", root_path %>
-<div id="games">
-  <% @releases.each do |release| %>
-    <%= link_to image_tag(release.resized_photo), release %>
-  <% end %>
+<div class="max-w-6xl m-auto">
+  <%= link_to "Genre Name", root_path %>
+    <div class="flex flex-wrap items-center justify-between">
+      <% @releases.each do |release| %>
+        <article class="border rounded-lg">
+          <%= link_to image_tag(release.resized_photo), release %>
+        </article>
+      <% end %>
+    </div>
 </div>

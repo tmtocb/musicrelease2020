@@ -5,6 +5,6 @@ class Release < ApplicationRecord
   validates :photo, presence: true
 
   def resized_photo
-    photo.variant(resize: "200x200")
+    photo.variant(resize: "200x200!")
   end
 end
