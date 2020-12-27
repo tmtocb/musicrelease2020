@@ -3,13 +3,23 @@
   <%= form_tag(releases_search_path, remote: true) do %>
     <div class="field">
       <%= label_tag :genre, "Genre: " %>
-    </div>
-    <%= select_tag :genre, options_from_collection_for_select(
+      <%= select_tag :genre, options_from_collection_for_select(
       @genres.to_a.unshift(Genre.new(id: 0, name: "All")),
       "name",
       "name",
-      "0")%>  
-  <% end %>
+      "0")%> 
+
+      <%= label_tag :order, "Release Order" %>
+      <%= select_tag :order, options_for_select([
+          "A-Z",
+          "Z-A",
+          "Highest Rating",
+          "Lowest Rating",
+          "Newest First",
+          "Oldest First"
+        ]), {include_blank: "Order"} %>
+    </div>    
+      <% end %>
 </div>
 
 
