@@ -1,11 +1,11 @@
 class ReleasesController < ApplicationController
   before_action :set_release, only: [:show, :edit, :update, :destroy]
+  before_action :set_genres, :set_genres, except: [:show, :destroy]
 
   # GET /releases
   # GET /releases.json
   def index
     @releases = Release.all
-    @genres = Genre.all
   end
 
   # GET /releases/1
@@ -66,6 +66,10 @@ class ReleasesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_release
       @release = Release.find(params[:id])
+    end
+
+    def set_genres
+      @genres = Genre.all
     end
 
     # Only allow a list of trusted parameters through.
