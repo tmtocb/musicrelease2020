@@ -15,5 +15,12 @@
   <%= @release.rating %>
 </p>
 
+<h3>This Release Belongs to <%= pluralize(@release.genres.count, "Genre") %>:</h3>
+<% @release.genres.each do |genre| %>
+  <p>
+    <%= link_to genre.name, genre %>
+  </p>
+<% end %>
+
 <%= link_to 'Edit', edit_release_path(@release) %> |
 <%= link_to 'Back', releases_path %>
