@@ -5,6 +5,7 @@ class ReleasesController < ApplicationController
   # GET /releases.json
   def index
     @releases = Release.all
+    @genres = Genre.all
   end
 
   # GET /releases/1
