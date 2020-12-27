@@ -1,3 +1,18 @@
+
+<div class="search-container">
+  <%= form_tag(releases_search_path, remote: true) do %>
+    <div class="field">
+      <%= label_tag :genre, "Genre: " %>
+    </div>
+    <%= select_tag :genre, options_from_collection_for_select(
+      @genres.to_a.unshift(Genre.new(id: 0, name: "All")),
+      "name",
+      "name",
+      "0")%>  
+  <% end %>
+</div>
+
+
 <% @genres.each do |genre| %>
   <h1><%= genre.name %></h1>
 <% genre.releases.each do |release| %>
