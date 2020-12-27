@@ -1,6 +1,8 @@
 <% @genres.each do |genre| %>
-<h1><%= genre.name %></h1>
+  <h1><%= genre.name %></h1>
 <% genre.releases.each do |release| %>
-<p><%= release.title %></p>
+  <p>
+    <%= link_to image_tag(release.photo, width: 150, height: 150), release %>    
+  </p>
 <% end %>
 <% end %>
