@@ -34,7 +34,7 @@
   <div class="mb-6">
     <%= form.label :photo, class: "label" %>
     <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-max-file-size="2" data-dropzone-max-files="1">
-       <%= form.file_field :photo, data: { target: "dropzone.input" } %>
+       <%= form.file_field :photo, direct_upload: true, data: { target: "dropzone.input" } %>
     <div class="dropzone-msg dz-message needsclick text-gray-600">
       <h3 class="dropzone-msg-title ml-1">Drag here to upload or click here to browse</h3>
       <span class="dropzone-msg-desc text ml-1">2 MB file size maximum. </span>
