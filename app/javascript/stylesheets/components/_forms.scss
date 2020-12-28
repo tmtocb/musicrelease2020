@@ -2,11 +2,11 @@
 @import "dropzone/dist/min/basic.min.css";
 
 .input {
-  @apply appearance-none block w-full bg-gray-100 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
+  @apply appearance-none block w-full bg-green-300 bg-opacity-75 text-gray-700 border border-gray-300 rounded py-3 px-4 leading-tight;
 }
 
 .input:focus {
-  @apply outline-none bg-white border-gray-400;
+  @apply outline-none bg-purple-400 border-gray-400;
 }
 
 .label {
@@ -24,10 +24,10 @@
 }
 
 .dropzone {
-  @apply border-2 rounded-lg border-gray-400 border-dashed;
+  @apply border-2 rounded-lg border-white border-dashed bg-green-300;
 
   &.dz-drag-hover {
-    @apply border-2 rounded-lg border-gray-200 border-dashed;
+    @apply border-2 rounded-lg border-white border-dashed;
 
     .dz-message {
       opacity: 0.9;

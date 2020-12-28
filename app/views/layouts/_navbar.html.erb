@@ -1,5 +1,5 @@
 <header class="mb-4">
-  <nav class="flex items-center justify-between flex-wrap bg-gray-100 py-3 lg:px-10 px-3 text-gray-700 border-b border-gray-400">
+  <nav class="flex items-center justify-between flex-wrap bg-white py-3 lg:px-10 px-3 text-gray-700 border-b border-gray-400">
     <div class="flex items-center flex-no-shrink mr-6">
       <%= link_to "Music Releases", root_path, class:"link text-xl tracking-tight font-semibold" %>
     </div>
@@ -23,8 +23,8 @@
           <%= link_to current_user.full_name, edit_user_registration_path, class:"link text-xl tracking-tight font-semibold lg:mr-2" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
         <% else %>
-          <%= link_to "Login", new_user_session_path, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
-          <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-default block" %>
+          <%= link_to "Login", new_user_session_path, class:"btn btn-defaultlogin mb-2 lg:mr-2 lg:mb-0 block" %>
+          <%= link_to "Sign Up", new_user_registration_path, class:"btn btn-defaultsign block" %>
         <% end %>
       </div>
     </div>

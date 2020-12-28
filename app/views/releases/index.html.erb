@@ -2,14 +2,14 @@
 <div class="search-container">
   <%= form_tag(releases_search_path, remote: true) do %>
     <div class="field">
-      <%= label_tag :genre, "Genre: " %>
+      <%= label_tag :genre, "Genre: ", class:"label" %>
       <%= select_tag :genre, options_from_collection_for_select(
       @genres.to_a.unshift(Genre.new(id: 0, name: "All")),
       "name",
       "name",
       "0")%> 
 
-      <%= label_tag :order, "Release Order" %>
+      <%= label_tag :order, "Sort by: ", class:"label" %>
       <%= select_tag :order, options_for_select([
           "A-Z",
           "Z-A",
@@ -19,7 +19,7 @@
           "Oldest First"
         ]), {include_blank: "Order"} %>
 
-      <%= submit_tag "Filter" %>
+      <%= submit_tag "Filter", class: "btn" %>
     </div>    
       <% end %>
 </div>

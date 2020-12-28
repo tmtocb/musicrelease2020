@@ -6,13 +6,16 @@
 
   <% @genres.each do |genre| %>
     <div class="container">
-                <div class="flex flex-col">
-      <div class="flex flex-row box-border h-15 w-30 p-4 border-2">
-        <%= form_with(model: genre, local: true) do |form| %>
+      <div class="flex flex-col">
+        <div class="flex flex-row box-border h-15 w-30 p-4 border-2">
+          <%= form_with(model: genre, local: true) do |form| %>
             <%= form.text_field :name, class:'text-2xl' %>
             <%= form.label "Feature" %>
-        <% end %>
-      </div>
+            <%= form.check_box :feature_in_navbar %>
+            <%= form.submit class: "btn btn-default" %>
+            <%= link_to "Delete", genre, method: :delete, data: {confirm: "Are you sure you want to delete the genre?"}, class: "btn btn-default" %>
+          <% end %>
+        </div>
       </div>
     </div>
   <% end %>
