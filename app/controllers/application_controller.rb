@@ -1,6 +1,9 @@
 class ApplicationController < ActionController::Base
-
   before_action :configure_permitted_parameters, if: :devise_controller?
+
+  def set_featured
+    Genre.where(feature_in_navbar: true).order('name ASC')
+  end
 
   protected
 
