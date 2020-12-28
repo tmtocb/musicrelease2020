@@ -11,12 +11,15 @@
     <div class="w-full block lg:flex-1 lg:flex items-center text-center lg:text-left">
       <div class="lg:flex-grow">
         <%= link_to "Basic Link", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
-        <% if user_signed_in? %>
-        <%= link_to "New Release", new_release_path, class: "btn btn-default" %>
+        <% if current_user %>
+          <% if current_user.admin %>
+          <%= link_to "New Release", new_release_path, class: "btn btn-default" %>
+          <%= link_to "Manage Genres", genres_path, class: "btn btn-default" %>
+          <% end %>
         <% end %>
       </div>
       <div class="w-full block lg:flex lg:flex-row lg:flex-1 mt-2 lg:mt-0 text-center lg:text-left lg:justify-end items-center">
-        <% if user_signed_in? %>
+        <% if current_user %>
           <%= link_to current_user.full_name, edit_user_registration_path, class:"link text-xl tracking-tight font-semibold lg:mr-2" %>
           <%= link_to "Log out", destroy_user_session_path, method: :delete, class:"btn btn-default mb-2 lg:mr-2 lg:mb-0 block" %>
         <% else %>
