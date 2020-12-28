@@ -11,32 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="mb-6">
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :review %>
-    <%= form.text_area :review %>
+  <div class="mb-6">
+    <%= form.label :review, class: "label" %>
+    <%= form.text_area :review, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :rating %>
-    <%= form.text_field :rating %>
+  <div class="mb-6">
+    <%= form.label :rating, class: "label" %>
+    <%= form.text_field :rating, class: "input" %>
   </div>
 
-  <div class="field">
-    <%= form.label :genres %>
+  <div class="mb-6">
+    <%= form.label :genres, class: "label" %>
     <%= form.collection_select :genre_ids, @genres, :id, :name, {}, {multiple: true} %>
   </div>
 
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.file_field :photo %>
+  <div class="mb-6">
+    <%= form.label :photo, class: "label" %>
+    <div class="dropzone dropzone-default dz-clickable" data-max-file-size="2" data-dropzone-max-files="1">
+       <%= form.file_field :insta_image, class: "input" %>
+    <div class="dropzone-msg dz-message needsclick text-gray-600">
+      <h3 class="dropzone-msg-title ml-1">Drag here to upload or click here to browse</h3>
+      <span class="dropzone-msg-desc text ml-1">2 MB file size maximum. </span>
+    </div>
+    </div>
   </div>
 
-  <div class="actions">
+  <div class="mb-6">
     <%= form.submit %>
   </div>
 <% end %>
