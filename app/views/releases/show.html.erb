@@ -38,7 +38,7 @@
 <div class="mt-3">
   <% if current_user&.admin %>
     <%= link_to 'Edit', edit_release_path(@release), class: 'btn btn-defaultsign' %> |
-    <%= link_to 'Back', releases_path, class: 'btn btn-defaultsign' %>
+    <%= link_to 'Delete', @release, method: :delete, class: 'btn btn-defaultsign' %>
   <% end %>
 </div>
 

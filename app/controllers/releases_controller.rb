@@ -1,5 +1,5 @@
 class ReleasesController < ApplicationController
-  before_action :set_release, only: [:show, :edit, :update, :destroy]
+  before_action :set_release, only: [:show, :edit, :update, :destroy, :like]
   before_action :set_genres, :set_genres, except: [:show, :destroy]
   before_action :is_admin!, except: [:index, :show]
   before_action :authenticate_user!, only: [:like]
@@ -58,8 +58,10 @@ class ReleasesController < ApplicationController
   def like
     if current_user.voted_for? @release
       @release.unliked_by current_user
+      redirect_to release_path(@release)
     else
       @release.liked_by current_user
+      redirect_to release_path(@release)
     end
   end
 
