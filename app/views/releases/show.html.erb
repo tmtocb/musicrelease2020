@@ -1,6 +1,12 @@
 
 
-<h2 class="heading text-4xl font-bold pt-4 mb-8"><%= @release.title %></h2>
+<div class="heading text-4xl font-bold pt-4 mb-8">
+  <% if params[:genre].nil? %>
+  <%= link_to @release.title, root_path %>
+<% else %>
+  <%= link_to @release.title, root_path(genre: params[:genre], order: params[:order]) %>
+<% end %>
+</div>
 
 <div class="mb-4">
    <%= image_tag(@release.photo, width: 150, height: 150) %>  
@@ -30,8 +36,9 @@
 <% end %>
 
 <div class="mt-3">
-<% if current_user&.admin %>
-<%= link_to 'Edit', edit_release_path(@release), class: 'btn btn-defaultsign' %> |
-<%= link_to 'Back', releases_path, class: 'btn btn-defaultsign' %>
-<% end %>
+  <% if current_user&.admin %>
+    <%= link_to 'Edit', edit_release_path(@release), class: 'btn btn-defaultsign' %> |
+    <%= link_to 'Back', releases_path, class: 'btn btn-defaultsign' %>
+  <% end %>
 </div>
+

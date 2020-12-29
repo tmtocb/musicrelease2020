@@ -4,7 +4,7 @@ class ReleasesController < ApplicationController
   before_action :is_admin!, except: [:index, :show]
   before_action :authenticate_user!, only: [:like]
   def index
-    set_release_genre_with_criteria(params[:genre], '')
+    set_release_genre_with_criteria(params[:genre], params[:order])
   end
 
   def search
@@ -80,6 +80,7 @@ class ReleasesController < ApplicationController
         releases_by_genre = filter_releases_by_genre(requested_genre)
         @genre_name = requested_genre
       end
+      @order = requested_order
       order_releases(requested_order, releases_by_genre)
     end
 
