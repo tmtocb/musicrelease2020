@@ -19,12 +19,14 @@
           "Oldest First"
         ]), {include_blank: "Order"} %>
 
-      <%= submit_tag "Filter", class: "btn" %>
+      <%= submit_tag "Filter", class: "btn btn-defaultsign" %>
     </div>    
       <% end %>
 </div>
 
-<div id="genres">
-  <%= render 'releases/genres' %>
+<div class="mt-6">
+  <div id="genres">
+    <%= render 'releases/genres' %>
+  </div>
 </div>
 

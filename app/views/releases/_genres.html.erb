@@ -1,8 +1,7 @@
 <div class="max-w-6xl m-auto">
-  <%= link_to @genre_name, root_path %>
     <div class="flex flex-wrap items-center justify-between">
       <% @releases.each do |release| %>
-        <article class="border rounded-lg pt-2 pb-2">
+        <article class="border pt-1 pb-1 pr-1 pl-1 mb-3">
           <%= link_to image_tag(release.resized_photo), release %>
         </article>
       <% end %>
