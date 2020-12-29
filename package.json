@@ -8,6 +8,7 @@
     "@rails/webpacker": "4.3.0",
     "autoprefixer": "^9",
     "dropzone": "^5.7.2",
+    "jquery": "^3.5.1",
     "postcss": "^7",
     "stimulus": "^2.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
