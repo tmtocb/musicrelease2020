@@ -2,6 +2,7 @@ class ReleasesController < ApplicationController
   before_action :set_release, only: [:show, :edit, :update, :destroy]
   before_action :set_genres, :set_genres, except: [:show, :destroy]
   before_action :is_admin!, except: [:index, :show]
+  before_action :authenticate_user!, only: [:like]
   def index
     set_release_genre_with_criteria(params[:genre], '')
   end
@@ -51,6 +52,14 @@ class ReleasesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to releases_url, notice: 'Release was successfully destroyed.' }
       format.json { head :no_content }
+    end
+  end
+
+  def like
+    if current_user.voted_for? @release
+      @release.unliked_by current_user
+    else
+      @release.liked_by current_user
     end
   end
 
