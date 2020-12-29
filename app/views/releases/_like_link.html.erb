@@ -1,3 +1,2 @@
 <%= vote_text = current_user&.voted_for?(release) ? "Unlike" : "Like" %>
-
-<%= link_to vote_text, like_release_path(release), method: :put, remote: :true, class: 'like-post' %>
+<%= link_to vote_text, like_release_path(release), method: :put, remote: :true%>

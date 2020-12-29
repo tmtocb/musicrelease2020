@@ -1,7 +1,7 @@
 class ReleasesController < ApplicationController
   before_action :set_release, only: [:show, :edit, :update, :destroy, :like]
   before_action :set_genres, :set_genres, except: [:show, :destroy]
-  before_action :is_admin!, except: [:index, :show]
+  before_action :is_admin!, except: [:index, :show, :search]
   before_action :authenticate_user!, only: [:like]
   def index
     set_release_genre_with_criteria(params[:genre], params[:order])
