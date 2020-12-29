@@ -1,28 +1,37 @@
-<p>
-  <strong>Title:</strong>
-  <%= @release.title %>
-</p>
 
-<p>
-  <%= link_to image_tag(@release.photo, width: 150, height: 150), @release %>   
-</p>
 
-<p>
-  <strong>Review:</strong>
-  <%= @release.review %>
-</p>
+<h2 class="heading text-4xl font-bold pt-4 mb-8"><%= @release.title %></h2>
 
-<p>
-  <strong>Rating:</strong>
-  <%= @release.rating %>
-</p>
+<div class="mb-4">
+   <%= image_tag(@release.photo, width: 150, height: 150) %>  
+</div>
+
+<div class="mb-4 input">
+  Review: <%= @release.review %>
+</div>
+
+<div class="mb-4 input">
+  Rating: [<%= @release.rating %>/10]
+</div>
+
+<div class="mb-4">
+  <%= render 'releases/likes', release: @release %>
+</div>
+
+<div class="mb-4">
+  <%= render 'releases/like_link', release: @release %>
+</div>
 
 <h3>This Release Belongs to <%= pluralize(@release.genres.count, "Genre") %>:</h3>
 <% @release.genres.each do |genre| %>
   <p>
-    <%= link_to genre.name, releases_path(genre: genre.name) %>
+    <%= link_to genre.name, root_path(genre: genre.name) %>
   </p>
 <% end %>
 
-<%= link_to 'Edit', edit_release_path(@release) %> |
-<%= link_to 'Back', releases_path %>
+<div class="mt-3">
+<% if current_user&.admin %>
+<%= link_to 'Edit', edit_release_path(@release), class: 'btn btn-defaultsign' %> |
+<%= link_to 'Back', releases_path, class: 'btn btn-defaultsign' %>
+<% end %>
+</div>
