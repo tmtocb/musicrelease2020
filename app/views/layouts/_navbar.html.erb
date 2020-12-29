@@ -9,11 +9,13 @@
       </button>
     </div>
     <div class="w-full block lg:flex-1 lg:flex items-center text-center lg:text-left">
-      <div class="lg:flex-grow">
-        <%= link_to "Basic Link", "#", class: "block mt-4 lg:inline-block lg:mt-0 lg:mr-4 mb-2 lg:mb-0 link" %>
+        <% @featured.each do |genre| %>
+          <%= link_to genre.name, root_path(genre: genre.name), class: "btn btn-defaultsign" %>
+        <% end %>
         <% if current_user %>
           <% if current_user.admin %>
           <%= link_to "New Release", new_release_path, class: "btn btn-default" %>
+          <%= link_to "New Genre", new_genre_path, class: "btn btn-default" %>
           <%= link_to "Manage Genres", genres_path, class: "btn btn-default" %>
           <% end %>
         <% end %>

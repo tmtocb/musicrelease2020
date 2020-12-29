@@ -11,12 +11,17 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  <div class="mb-6">
+    <%= form.label :name, class: "label" %>
+    <%= form.text_field :name, class: "input" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="mb-6">
+    <%= form.label :feature_in_navbar, class: "label" %>
+    <%= form.check_box :feature_in_navbar %>
+  </div>
+
+  <div class="mb-6">
+    <%= form.submit "New Genre", class: "btn btn-default" %>
   </div>
 <% end %>
