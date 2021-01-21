@@ -1,6 +1,6 @@
 class Release < ApplicationRecord
   has_and_belongs_to_many :genres
-  has_one_attached :photo
+  has_one_attached :photo, dependent: :destroy
   validates :photo, presence: true
   acts_as_votable
 

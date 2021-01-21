@@ -26,3 +26,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
+group :production do
+  gem 'aws-sdk-s3', '1.46.0', require: false
+end
+
