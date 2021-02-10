@@ -18,3 +18,4 @@ require("channels")
 
 import "stylesheets/application"
 import "controllers"
+import gtag from "src/analytics"
